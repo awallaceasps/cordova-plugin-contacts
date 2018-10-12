@@ -89,6 +89,12 @@ public class ContactManager extends CordovaPlugin {
         PermissionHelper.requestPermission(this, requestCode, WRITE);
     }
 
+	protected void getReadWritePermission(int requestCode)
+    {
+        PermissionHelper.requestPermissions(this, requestCode, new String[] {READ, WRITE});
+
+    }
+
 
     /**
      * Executes the request and returns PluginResult.
@@ -136,7 +142,7 @@ public class ContactManager extends CordovaPlugin {
             }
             else
             {
-                getWritePermission(SAVE_REQ_CODE);
+                getReadWritePermission(SAVE_REQ_CODE);
             }
         }
         else if (action.equals("remove")) {
